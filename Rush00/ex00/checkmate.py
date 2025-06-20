@@ -43,13 +43,17 @@ def checkmate(board_str):
 
     def check_rook():
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        return check_line(directions, ['R', 'Q'])
+        return check_line(directions, ['R'])
 
     def check_bishop():
         directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
-        return check_line(directions, ['B', 'Q'])
+        return check_line(directions, ['B'])
 
-    if check_pawn() or check_rook() or check_bishop():
+    def check_queen():
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]
+        return check_line(directions, ['Q'])
+
+    if check_pawn() or check_rook() or check_bishop() or check_queen():
         print("Success")
     else:
         print("Fail")
